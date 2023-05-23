@@ -1,3 +1,5 @@
+
+/*Geral*/
 * {
     margin: 0 auto;
     padding: 0;
@@ -22,8 +24,22 @@ nav {
     color: #000;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h5 {
     text-align: center;
+}
+
+.card {
+    width: 15rem;
+}
+
+.card:hover {
+    width: 100%;
+    transition: 530ms ease;
+}
+
+.card-body {
+    background-color: #000;
+    color: #f5f5f5;
 }
 
 footer {
@@ -31,3 +47,12 @@ footer {
     color: #61efeb;
     border: 2px solid #61efeb;
 }
+
+/*Sobre nós*/
+#about-us p{
+    margin: 20px 20px;
+}
+
+/*Catálogo*/
+
+/*Instrumento Page*/
