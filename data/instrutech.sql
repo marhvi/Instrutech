@@ -29,9 +29,9 @@ USE instrutech;
 -- Estrutura para tabela `cliente`
 --
 
-CREATE OR REPLACE TABLE `cliente` (
-  `idcliente` int(11) NOT NULL,
-  `nome` varchar(30) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `idcliente` int(11) AUTO_INCREMENT NOT NULL,
+  `nome` varchar(70) NOT NULL,
   `cep` varchar(9) NOT NULL,
   `endereco` varchar(40) NOT NULL,
   `num` varchar(25) NOT NULL,
@@ -39,8 +39,10 @@ CREATE OR REPLACE TABLE `cliente` (
   `cidade` varchar(20) NOT NULL,
   `estado` varchar(2) NOT NULL,
   `email` varchar(20) NOT NULL,
-  `senha` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  PRIMARY KEY (`idcliente`),
+  `senha` varchar(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL default CURRENT_TIMESTAMP,
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -48,12 +50,13 @@ CREATE OR REPLACE TABLE `cliente` (
 -- Estrutura para tabela `funcionario`
 --
 
-CREATE OR REPLACE TABLE `funcionario` (
-  `idfuncionario` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `funcionario` (
+  `idfuncionario` int(11) AUTO_INCREMENT NOT NULL,
   `nome` varchar(35) NOT NULL,
   `cargo` varchar(25) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `senha` varchar(8) NOT NULL
+  `senha` varchar(8) NOT NULL,
+  PRIMARY KEY (`idfuncionario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -62,13 +65,20 @@ CREATE OR REPLACE TABLE `funcionario` (
 -- Estrutura para tabela `pedido`
 --
 
-CREATE OR REPLACE TABLE `pedido` (
-  `idpedido` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pedido` (
+  `idpedido` int(11) AUTO_INCREMENT NOT NULL,
   `data` date NOT NULL,
   `valortotal` int(11) NOT NULL,
   `idproduto` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
-  `idfuncionario` int(11) NOT NULL
+  `idfuncionario` int(11) NOT NULL,
+  PRIMARY KEY (`idpedido`),
+  KEY `idcliente` (`idcliente`),
+  KEY `idfuncionario` (`idfuncionario`),
+  KEY `idproduto` (`idproduto`),
+  CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`),
+  CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`idfuncionario`) REFERENCES `funcionario` (`idfuncionario`),
+  CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`idproduto`) REFERENCES `produto` (`idproduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -77,60 +87,33 @@ CREATE OR REPLACE TABLE `pedido` (
 -- Estrutura para tabela `produto`
 --
 
-CREATE OR REPLACE TABLE `produto` (
-  `idproduto` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `produto` (
+  `idproduto` int(11) AUTO_INCREMENT NOT NULL,
+  `foto` longtext NOT NULL,
+  `nome` varchar(35) NOT NULL,
   `descricao` varchar(255) NOT NULL,
   `marca` varchar(35) NOT NULL,
   `valor` int(11) NOT NULL,
-  `nome` varchar(35) NOT NULL,
   `estado` enum('novo','usado') NOT NULL,
-  `tipo` enum('venda','aluguel') NOT NULL
+  `tipo` enum('venda','aluguel') NOT NULL,
+  PRIMARY KEY (`idproduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Índices para tabelas despejadas
---
-
---
--- Índices de tabela `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`idcliente`);
-
---
--- Índices de tabela `funcionario`
---
-ALTER TABLE `funcionario`
-  ADD PRIMARY KEY (`idfuncionario`);
-
---
--- Índices de tabela `pedido`
---
-ALTER TABLE `pedido`
-  ADD PRIMARY KEY (`idpedido`),
-  ADD KEY `idcliente` (`idcliente`),
-  ADD KEY `idfuncionario` (`idfuncionario`),
-  ADD KEY `idproduto` (`idproduto`);
-
---
--- Índices de tabela `produto`
---
-ALTER TABLE `produto`
-  ADD PRIMARY KEY (`idproduto`);
-
---
--- Restrições para tabelas despejadas
---
-
---
--- Restrições para tabelas `pedido`
---
-ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`),
-  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`idfuncionario`) REFERENCES `funcionario` (`idfuncionario`),
-  ADD CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`idproduto`) REFERENCES `produto` (`idproduto`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- CREATE OR REPLACE TABLE login(
+--     id int PRIMARY KEY AUTO_INCREMENT,
+--     email varchar(250) NOT NULL unique,
+--     senha varchar(255) NOT NULL,
+--     created_at TIMESTAMP NOT NULL default CURRENT_TIMESTAMP
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- INSERT INTO login(email, senha) VALUES ('admin@instrutech.com', md5('admin@123'));
+
+INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha) 
+            VALUES ('Marcus Vinicius', 123456789,  "Rua B. de Jaceguai", 0, "Ponta d'Areia", 'Niterói', 'RJ', 'mv@email.com', md5(12345678));
+INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha) 
+            VALUES ('Gabigol', 987654321,  "Rua da Artilharia", 9, "Leblon", 'Rio de Janeiro', 'RJ', 'lilgabi@mengo.com', md5(12345678));

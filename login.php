@@ -1,3 +1,7 @@
+<?php
+include('config.php');
+require_once('repository/LoginRepository.php');
+?>
 <!DOCTYPE html>
 <html lang="pt_br">
 
@@ -18,23 +22,7 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul class="nav">
-                <li><a href="index.html">Instrutech</a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="sobrenos.html">Sobre nós</a></li>
-                <li class="search-bar">
-                    <input type="text" placeholder="  Pesquisar" class="search">
-                    <button type="submit" class="btn-search">Buscar</button>
-                </li>
-                <li><a href="minhaConta.html"><img
-                            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-                            alt="perfil" id="avatar"></a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include('navbar.php') ?>
     <br>
     <main>
         <section>
@@ -44,25 +32,29 @@
                     <form action="loginSistema.php" method="post" class="form" enctype="multipart/form-data">
                         <div class="mb-3 form-group">
                             <label for="emailId" class="form-label">Email</label>
-                            <input type="email" name="email" id="emailId" class="form-control"
-                                placeholder="Informe o email">
+                            <input type="email" name="email" id="emailId" class="form-control" placeholder="Informe o email">
                             <div id="helperEmail" class="form-text">Informe o email</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="senhaId" class="form-label">Senha</label>
-                            <input type="password" name="senha" id="senhaId" class="form-control"
-                                placeholder="Informe a senha">
+                            <input type="password" name="senha" id="senhaId" class="form-control" placeholder="Informe a senha">
                             <div id="helperSenha" class="form-text">Informe a senha</div>
                         </div>
                         <div class="d-grid gap-2 d-md-block">
                             <button type="submit" class="btn btn-dark">Login</button>
                             <a href="">Recuperar a senha</a>
                         </div>
+                        <br>
+                        <div class="d-grid gap-2 d-md-block">
+                            <p>Não possui cadastro?</p>
+                            <a href="formulario-cadastro-cliente.php">Cadastrar</a>
+                        </div>
                     </form>
                 </fieldset>
             </div>
         </section>
     </main>
+    <?php include('footer.php') ?>
 </body>
 
 </html>

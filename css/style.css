@@ -1,38 +1,49 @@
 
 /*Geral*/
-* {
+html, body {
+    height: 100%;
     margin: 0 auto;
     padding: 0;
     font-size: 18px;
     font-family: 'DM Sans', sans-serif;
-   
-}
-
-html {
-    width: 100%;
-    height: 100%;
 }
 
 body {
     background: url(../images/fundof5f5f5.png);
+    display: flex;
+    flex-direction: column;
 }
 
-nav {
+header {
     background-color: #ff6b35;
     border: 1px solid #000;
+    text-align: center;
 }
 
+section{
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+    background-color: #000;
+    color: #61efeb;
+    border: 3px solid #61efeb;
+    padding: 30px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
 .nav {
-    display: flex;
+  display: flex;
   align-items: center;
-  background-color: #ff6b35;
-  border: 1px solid #000;
 }
 
 .nav li {
     list-style: none;
     display: inline-block;
-    padding: 0 20px 0 20px;
+    padding: 0 10px 0 10px;
     margin-left: 50px;
 }
 
@@ -42,11 +53,11 @@ nav {
 }
 
 #avatar {
-   margin-top: -1px;
-   width: 45px;
-   height: 45px;
-   border: 3px solid #000;
-   border-radius: 25px;
+    margin-top: -1px;
+    width: 45px;
+    height: 45px;
+    border: 3px solid #000;
+    border-radius: 25px;
 }
 
 #logo {
@@ -67,6 +78,20 @@ nav {
     color: #f5f5f5;
 }
 
+.btn-search:hover {
+    background-color: #61efeb;
+    color: #000;
+}
+
+.login-btn {
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+
+.login-btn:hover {
+    background-color: #000;
+    color: #f5f5f5;
+}
 
 h1, h2, h3, h6 {
     text-align: center;
@@ -76,9 +101,7 @@ h1, h2, h3, h6 {
     width: 15rem;
     border: 1px solid black;
     box-shadow: 3px 2px 10px rgba(0, 0, 0, 4);
-    margin-left: 45px;
-    margin-bottom: 35px;
-    margin-top: 35px;
+    margin: 0 auto;
     background-color: #000;
 }
 
@@ -88,25 +111,20 @@ h1, h2, h3, h6 {
 }
 
 .card-body {
-    width: 15rem;
+    width: 14.9rem;
     background-color: #000;
     color: #f5f5f5;
 }
 
 .card-img-top {
-    width: 300px;
+    background-color: #f5f5f5;
+    width: 14.9rem;
     height: 300px;
 }
 
-footer {
-    background-color: #000;
-    color: #61efeb;
-    border: 2px solid #61efeb;
-}
-
-/*Sobre nós*/
-#about-us p{
-    margin: 20px 20px;
+/*Carrossel Index*/
+.carousel,  img { 
+    margin: 0 auto;
 }
 
 /*Catálogo*/
@@ -118,28 +136,30 @@ footer {
     margin-left: 200px;
     width: 300px;
     height: 310px;
-
-}
-
-.texto {
+  }
+  
+  .texto {
     margin-left: 700px;
     margin-top: -170px;
-}
-
-.p1, .p2, .p3, .botao2 {
+  }
+  
+  .p1,
+  .p2,
+  .p3,
+  .botao {
     padding: 5px;
-}
-
-.botao {
+  }
+  
+  .botao {
     width: 300px;
     background-color: #61efeb;
     border: 3px solid #000;
     transition: 0.1s;
-}
-
-.botao:hover {
+  }
+  
+  .botao:hover {
     transform: scale(1.1);
-}
+  }
 
 /*Minha Conta*/
 .my-account-container, .my-deals-container {
@@ -147,6 +167,6 @@ footer {
     background-color: #000;
     text-align: center;
     width: 50%;
-    margin-top: 25px;
     border: 3px solid #61efeb;
+    margin: 25px auto;
 }

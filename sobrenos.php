@@ -1,3 +1,4 @@
+<?php include('config.php') ?>
 <!DOCTYPE html>
 <html lang="pt_br">
 
@@ -11,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link href="css/style.css" rel="stylesheet">
 
@@ -18,29 +20,12 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul class="nav">
-                <li><img src="images/logo.png" alt="logo" id="logo"></li>
-                <li><a href="index.html">Instrutech</a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="sobrenos.html">Sobre nós</a></li>
-                <li class="search-bar">
-                    <input type="text" placeholder="  Pesquisar" class="search">
-                    <button type="submit" class="btn-search">Buscar</button>
-                </li>
-                <li><a href="minhaConta.html"><img
-                            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-                            alt="perfil" id="avatar"></a></li>
-            </ul>
-        </nav>
-    </header>
-    <br>
+    <?php include('navbar.php') ?>
     <main>
         <section id="about-us">
             <div class="container">
-                <h1>Sobre Nós</h1>
+                <br>
+                <h3>Sobre Nós</h3>
                 <p>Bem-vindo à Instrutech!</p>
                 <p>Somos uma loja especializada em venda e aluguel de instrumentos musicais, oferecendo uma ampla
                     variedade
@@ -77,11 +62,7 @@
             </div>
         </section>
     </main>
-
-    <footer>
-        <h5>"Você é o instrumento que escolhe ser."</h5>
-        <h5>&copy; Instrutech ~ 2023 </h5>
-    </footer>
+    <?php include('footer.php') ?>
 </body>
 
 </html>
