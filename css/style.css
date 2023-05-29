@@ -130,14 +130,15 @@ h1, h2, h3, h6 {
 /*Catálogo*/
 
 /*Instrumento Page*/
-.foto-produto {
+  .foto-produto{
+    border: 3px solid #000;
     display: inline;
     margin-top: 30px;
     margin-left: 200px;
     width: 300px;
     height: 310px;
   }
-  
+
   .texto {
     margin-left: 700px;
     margin-top: -170px;

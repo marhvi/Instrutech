@@ -15,6 +15,9 @@
     <link href="css/style.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <title>Página
         do Instrumento</title>
 </head>
@@ -69,8 +72,36 @@
                         </div>
                         <div class="mb-3 form-group">
                             <label for="estadoId" class="form-label">Estado</label>
-                            <input type="text" name="estado" id="estadoId" class="form-control" placeholder="Informe o estado">
-                            <div id="helperEstado" class="form-text">Informe o estado</div>
+                            <select name="estado" id="estadoId" class="form-control" style>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
+                            <div id="helperEstado" class="form-text">Selecione o estado</div>
                         </div>
                         <button type="submit" class="btn btn-dark">Enviar</button>
                         <div id="notify" class="form-text text-capitalize fs-4">
@@ -82,6 +113,7 @@
         </section>
     </main>
     <?php include('footer.php') ?>
+    <script src="js/base64.js"></script>
 </body>
 
 </html>

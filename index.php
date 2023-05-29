@@ -11,13 +11,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
         <link href="css/style.css" rel="stylesheet">
         <link href="css/carousel.css" rel="stylesheet">
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
 
         <title>Instrutech</title>
@@ -46,7 +48,9 @@
                     <hr>
                     <div class="col-sm-3">
                         <div class="card">
-                            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/03/16/00/08/piano-2147856_640.png" alt="Imagem de capa do card">
+                            <img class="card-img-top"
+                                src="https://cdn.pixabay.com/photo/2017/03/16/00/08/piano-2147856_640.png"
+                                alt="Imagem de capa do card">
                             <div class="card-body">
                                 <h5 class="card-title">Título especial</h5>
                                 <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um
@@ -58,7 +62,9 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="card">
-                            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Triangel_%28Instrument%29.png/200px-Triangel_%28Instrument%29.png" alt="Imagem de capa do card">
+                            <img class="card-img-top"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Triangel_%28Instrument%29.png/200px-Triangel_%28Instrument%29.png"
+                                alt="Imagem de capa do card">
                             <div class="card-body">
                                 <h5 class="card-title">Título especial</h5>
                                 <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um
@@ -70,7 +76,9 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="card">
-                            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/09/26/19/21/drums-1696802_640.png" alt="Imagem de capa do card">
+                            <img class="card-img-top"
+                                src="https://cdn.pixabay.com/photo/2016/09/26/19/21/drums-1696802_640.png"
+                                alt="Imagem de capa do card">
                             <div class="card-body">
                                 <h5 class="card-title">Título especial</h5>
                                 <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um
@@ -82,7 +90,9 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="card">
-                            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/09/26/19/21/drums-1696802_640.png" alt="Imagem de capa do card">
+                            <img class="card-img-top"
+                                src="https://cdn.pixabay.com/photo/2016/09/26/19/21/drums-1696802_640.png"
+                                alt="Imagem de capa do card">
                             <div class="card-body">
                                 <h5 class="card-title">Título especial</h5>
                                 <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um
