@@ -1,8 +1,22 @@
-<?php include('config.php') ?>
-<!DOCTYPE html>
-<html lang="pt_br">
+<?php
+include('config.php');
+require_once('repository/ClienteRepository.php');
+
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+if (!isset($id)) {
+
+    $id = $_SESSION['login']->idcliente;
+}
+$cliente = fnLocalizaClientePorId($id);
+?>
+
+<!doctype html>
+<html lang="pt_BR">
 
 <head>
+    <title>Editar Cliente</title>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +30,17 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Página
-        do Instrumento</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
 </head>
 
 <body>
-    <?php include('navbar.php') ?>
+    <?php include('navbar.php'); ?>
     <main>
         <section>
             <div class="col-6 offset-3">
@@ -114,6 +133,22 @@
                             </select>
                             <div id="helperEstado" class="form-text">Informe o estado</div>
                         </div>
+                        <div class="mb-3 form-group">
+                            <label for="privilegioId" class="form-label">Privilegio</label>
+                            <select name="privilegio" id="privilegioId" class="form-control">
+                                <option value="compra" <?= $cliente->privilegio == 'compra' ? 'selected' : '' ?>>Apenas
+                                    Comprador</option>
+                                <option value="venda" <?= $cliente->privilegio == 'venda' ? 'selected' : '' ?>>Vendedor
+                                    e Comprador
+                                </option>
+                                <?php if ($admin) : ?>
+                                    <option value="admin" <?= $cliente->privilegio == 'admin' ? 'selected' : '' ?>>
+                                        Administrador</option>
+                                <?php endif; ?>
+                            </select>
+                            <div id="helperPrivilegio" class="form-text">Selecione o seu privilegio</div>
+                        </div>
+
 
                         <button type="submit" class="btn btn-dark">Enviar</button>
                         <div id="notify" class="form-text text-capitalize fs-4">
@@ -121,10 +156,9 @@
                     </form>
                 </fieldset>
             </div>
-
         </section>
     </main>
-    <?php include('footer.php') ?>
+
 </body>
 
 </html>

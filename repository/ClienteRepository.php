@@ -3,12 +3,12 @@ require_once('Connection.php');
 
 # CRUD cliente
 
-function fnAddCliente($nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $senha)
+function fnAddCliente($nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $senha, $privilegio)
 {
     $con = getConnection();
 
-    $sql = "INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha) 
-            VALUES (:pNome, :pCep, :pEndereco, :pNum, :pBairro, :pCidade, :pEstado, :pEmail, :pSenha)";
+    $sql = "INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha, privilegio) 
+            VALUES (:pNome, :pCep, :pEndereco, :pNum, :pBairro, :pCidade, :pEstado, :pEmail, :pSenha, :pPrivilegio)";
 
     $stmt = $con->prepare($sql);
     $stmt->bindParam(":pNome", $nome);
@@ -20,9 +20,11 @@ function fnAddCliente($nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $
     $stmt->bindParam(":pEstado", $estado);
     $stmt->bindParam(":pEmail", $email);
     $stmt->bindValue(":pSenha", md5($senha));
+    $stmt->bindParam(":pPrivilegio", $privilegio);
 
     return $stmt->execute();
 }
+
 
 
 function fnListClientes()
@@ -73,13 +75,13 @@ function fnLocalizaClientePorId($id)
     return null;
 }
 
-function fnUpdateCliente($id, $nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $senha)
+function fnUpdateCliente($id, $nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $privilegio)
 {
     $con = getConnection();
 
     $sql = "UPDATE cliente 
             SET nome = :pNome, cep = :pCep, endereco = :pEndereco, num = :pNum, 
-                bairro = :pBairro, cidade = :pCidade, estado = :pEstado, email = :pEmail, senha = :pSenha 
+                bairro = :pBairro, cidade = :pCidade, estado = :pEstado, email = :pEmail, privilegio = :pPrivilegio
             WHERE idcliente = :pID";
 
     $stmt = $con->prepare($sql);
@@ -92,7 +94,8 @@ function fnUpdateCliente($id, $nome, $cep, $endereco, $num, $bairro, $cidade, $e
     $stmt->bindParam(":pCidade", $cidade);
     $stmt->bindParam(":pEstado", $estado);
     $stmt->bindParam(":pEmail", $email);
-    $stmt->bindValue(":pSenha", md5($senha));
+    // $stmt->bindValue(":pSenha", md5($senha));
+    $stmt->bindParam(":pPrivilegio", $privilegio);
 
     return $stmt->execute();
 }

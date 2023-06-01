@@ -1,4 +1,14 @@
-<?php include('config.php') ?>
+<?php
+include('config.php');
+require_once('repository/ClienteRepository.php');
+
+$cliente = fnLocalizaClientePorId(1);
+if ($cliente && $cliente->privilegio === 'admin') {
+    $admin = true;
+} else {
+    $admin = false;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt_br">
 
@@ -101,7 +111,18 @@
                                 <option value="SE">SE</option>
                                 <option value="TO">TO</option>
                             </select>
-                            <div id="helperEstado" class="form-text">Selecione o estado</div>
+                            <div id="helperPrivilegio" class="form-text">Selecione o Privilegio</div>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="privilegioId" class="form-label">Privilegio</label>
+                            <select name="privilegio" id="privilegioId" class="form-control">
+                                <option value="compra">Apenas Comprador</option>
+                                <option value="venda">Vendedor e Comprador</option>
+                                <?php if ($admin) : ?>
+                                    <option value="admin">Administrador</option>
+                                <?php endif; ?>
+                            </select>
+                            <div id="helperPrivilegio" class="form-text">Selecione o seu privilegio</div>
                         </div>
                         <button type="submit" class="btn btn-dark">Enviar</button>
                         <div id="notify" class="form-text text-capitalize fs-4">

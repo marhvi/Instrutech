@@ -1,8 +1,8 @@
 <?php
 include('config.php');
-require_once('repository/ClienteRepository.php');
+require_once('repository/InstrumentoRepository.php');
 
-$clientes = fnListClientes();
+$instrumentos = fnListInstrumentos();
 
 ?>
 
@@ -17,7 +17,7 @@ $clientes = fnListClientes();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 
-    <title>Lista de Clientes</title>
+    <title>Lista de Instrumentos</title>
 </head>
 
 <body>
@@ -25,46 +25,41 @@ $clientes = fnListClientes();
     <main>
         <section>
             <div class="container">
-                <h1>Lista de Clientes</h1>
+                <h1>Lista de Instrumentos</h1>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
-                            <th>Email</th>
+                            <th>Valor</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($clientes as $cliente) : ?>
+                        <?php foreach ($instrumentos as $instrumento) : ?>
                         <tr>
-                            <td><?= $cliente->idcliente ?></td>
-                            <td><?= $cliente->nome ?></td>
-                            <td><?= $cliente->email ?></td>
+                            <td><?= $instrumento->idproduto ?></td>
+                            <td><?= $instrumento->nome ?></td>
+                            <td><?= $instrumento->valor ?></td>
                             <td>
-                                <a href="formulario-edita-cliente.php?id=<?= $cliente->idcliente ?>"
+                                <a href="formulario-edita-instrumento.php?id=<?= $instrumento->idproduto ?>"
                                     class="btn btn-primary">Editar</a>
-                                <a href="excluirCliente.php?id=<?= $cliente->idcliente ?>"
+                                <a href="excluirInstrumento.php?id=<?= $instrumento->idproduto ?>"
                                     class="btn btn-danger">Excluir</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
-                        <div class="d-flex">
-                            <button type="button" class="btn btn-dark">
-                                <a href="formulario-cadastro-cliente.php"
-                                    style="color: white; text-decoration: none;">Cadastrar Novo Cliente</a>
-                            </button>
-                            <form role="search" method="post" action="localiza-instrumento.php" class="ml-auto">
-                                <input type="text" placeholder="Pesquisar" class="search">
-                                <button type="submit" class="btn-search">Buscar</button>
-                            </form>
+                        <div>
+                            <button type="submit" class="btn btn-dark"><a
+                                    style="color: white; text-decoration: none; margin: 0 auto;"
+                                    href="formulario-cadastro-instrumento.php">Cadastrar Novo
+                                    Instrumento</a></button>
                         </div>
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
-
 
 </body>
 

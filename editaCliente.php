@@ -1,6 +1,5 @@
 <?php
 require_once('repository/ClienteRepository.php');
-require_once('util/base64.php');
 
 session_start();
 
@@ -13,10 +12,11 @@ $num = filter_input(INPUT_POST, 'num', FILTER_SANITIZE_SPECIAL_CHARS);
 $bairro = filter_input(INPUT_POST, 'bairro', FILTER_SANITIZE_SPECIAL_CHARS);
 $cidade = filter_input(INPUT_POST, 'cidade', FILTER_SANITIZE_SPECIAL_CHARS);
 $estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_SPECIAL_CHARS);
+$privilegio = filter_input(INPUT_POST, 'privilegio', FILTER_SANITIZE_SPECIAL_CHARS);
 
 
 
-if (fnUpdateCliente($id, $nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $senha)) {
+if (fnUpdateCliente($id, $nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $privilegio)) {
     $msg = "Sucesso ao gravar";
 } else {
     $msg = "Falha na gravação";

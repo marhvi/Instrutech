@@ -4,7 +4,7 @@ require_once('repository/InstrumentoRepository.php');
 require_once('util/base64.php');
 
 
-$id = filter_input(INPUT_POST, 'idJogo', FILTER_SANITIZE_NUMBER_INT);
+$id = filter_input(INPUT_POST, 'idInstrumento', FILTER_SANITIZE_NUMBER_INT);
 $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
 $descricao = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_SPECIAL_CHARS);
 $marca = filter_input(INPUT_POST, 'marca', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -30,6 +30,7 @@ if (fnUpdateInstrumento(
     $msg = "Falha na gravação";
 }
 
+$_SESSION['id'] = $id;
 $page = "formulario-edita-instrumento.php";
 setcookie('notify', $msg, time() + 10, "instrutech/{$page}", 'localhost');
 header("location: {$page}");

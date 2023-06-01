@@ -41,9 +41,11 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `estado` enum('AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO') NOT NULL,
   `email` varchar(20) NOT NULL,
   `senha` varchar(255) NOT NULL,
+  `privilegio` enum('compra', 'venda', 'admin') NOT NULL DEFAULT 'compra',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idcliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 -- --------------------------------------------------------
@@ -52,14 +54,14 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 -- Estrutura para tabela `funcionario`
 --
 
-CREATE TABLE IF NOT EXISTS `funcionario` (
-  `idfuncionario` int(11) AUTO_INCREMENT NULL,
-  `nome` varchar(35) NOT NULL,
-  `cargo` varchar(25) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `senha` varchar(8) NOT NULL,
-  PRIMARY KEY (`idfuncionario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+-- CREATE TABLE IF NOT EXISTS `funcionario` (
+--   `idfuncionario` int(11) AUTO_INCREMENT NULL,
+--   `nome` varchar(35) NOT NULL,
+--   `cargo` ENUM('funcionario', 'administrador') NOT NULL DEFAULT 'funcionario',
+--   `email` varchar(30) NOT NULL,
+--   `senha` varchar(8) NOT NULL,
+--   PRIMARY KEY (`idfuncionario`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 
 -- --------------------------------------------------------
@@ -97,13 +99,13 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `valortotal` int(11) NOT NULL,
   `idproduto` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
-  `idfuncionario` int(11) NULL,
+  -- `idfuncionario` int(11) NULL,
   PRIMARY KEY (`idpedido`),
   KEY `idcliente` (`idcliente`),
-  KEY `idfuncionario` (`idfuncionario`),
+  -- KEY `idfuncionario` (`idfuncionario`),
   KEY `idproduto` (`idproduto`),
   CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`),
-  CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`idfuncionario`) REFERENCES `funcionario` (`idfuncionario`),
+  -- CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`idfuncionario`) REFERENCES `funcionario` (`idfuncionario`),
   CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`idproduto`) REFERENCES `produto` (`idproduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -123,10 +125,10 @@ DELETE FROM `produto`;
 
 ALTER TABLE `cliente` AUTO_INCREMENT = 1;
 
-INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha) 
-            VALUES ('Marcus Vinicius', 123456789,  "Rua B. de Jaceguai", 0, "Ponta d'Areia", 'Niteroi', 'RJ', 'mv@email.com', md5(12345678));
-INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha) 
-            VALUES ('Gabigol', 987654321,  "Rua da Artilharia", 9, "Leblon", 'Rio de Janeiro', 'RJ', 'lilgabi@mengo.com', md5(12345678));
+INSERT INTO cliente ( nome, cep, endereco, num, bairro, cidade, estado, email, senha, privilegio) 
+            VALUES ('Marcus Vinicius', 123456789,  "Rua B. de Jaceguai", 0, "Ponta d'Areia", 'Niteroi', 'RJ', 'mv@email.com', md5(12345678), 'admin');
+INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha, privilegio) 
+            VALUES ('Gabigol', 987654321,  "Rua da Artilharia", 9, "Leblon", 'Rio de Janeiro', 'RJ', 'lilgabi@mengo.com', md5(12345678), 'compra');
 
 ALTER TABLE `produto` AUTO_INCREMENT = 1;
 

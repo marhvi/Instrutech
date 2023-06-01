@@ -72,7 +72,7 @@ function fnUpdateInstrumento($id, $foto, $nome, $descricao, $marca, $valor, $est
 {
     $con = getConnection();
 
-    $sql = "UPDATE instrumentos SET foto = :pFoto, nome = :pNome, descricao = :pDescricao, marca = :pMarca, valor = :pValor, estado = :pEstado, tipo = :pTipo WHERE idproduto = :pID";
+    $sql = "UPDATE produto SET foto = :pFoto, nome = :pNome, descricao = :pDescricao, marca = :pMarca, valor = :pValor, estado = :pEstado, tipo = :pTipo WHERE idproduto = :pID";
 
     $stmt = $con->prepare($sql);
     $stmt->bindParam(":pID", $id);

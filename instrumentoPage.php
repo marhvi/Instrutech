@@ -5,8 +5,12 @@ require_once('repository/ClienteRepository.php');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $instrumento = fnLocalizaInstrumentoPorId($id);
-$idcliente = $_SESSION['login']->idcliente;
-$cliente = fnLocalizaClientePorId($idcliente);
+$cliente = null;
+
+if (isset($_SESSION['login'])) {
+    $idcliente = $_SESSION['login']->idcliente;
+    $cliente = fnLocalizaClientePorId($idcliente);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt_br">
@@ -35,17 +39,21 @@ $cliente = fnLocalizaClientePorId($idcliente);
             <img src="<?= "$instrumento->foto" ?>" class="foto-produto">
             <div class="texto">
                 <h4 class="p1">
-                    <?= "$instrumento->nome" ?>
+                    <b> Nome:</b> <?= "$instrumento->nome" ?>
                 </h4>
                 <p class="p2">
-                    <?= "$instrumento->descricao" ?></p>
+                    <b> Descrição:</b> <?= "$instrumento->descricao" ?>
+                </p>
                 <p class="p3">
-                    R$ <?= "$instrumento->valor" ?>
+                    <b> Marca:</b> <?= "$instrumento->marca" ?>
+                </p>
+                <p class="p4">
+                    <b> R$ </b> <?= "$instrumento->valor" ?>
                 </p>
                 <form method="post" action="registrarPedido.php">
                     <input type="hidden" name="valortotal" value="<?= $instrumento->valor ?>">
                     <input type="hidden" name="idproduto" value="<?= $instrumento->idproduto ?>">
-                    <input type="hidden" name="idcliente" value="<?= $cliente->idcliente ?>">
+                    <input type="hidden" name="idcliente" value="<?= $cliente->idcliente ?? '' ?>">
                     <button class="botao" type="submit">COMPRAR</button>
                 </form>
 
