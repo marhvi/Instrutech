@@ -91,7 +91,7 @@ function fnDeleteInstrumento($id)
 {
     $con = getConnection();
 
-    $sql = "delete from jogos where idproduto = :pID";
+    $sql = "delete from produto where idproduto = :pID";
 
     $stmt = $con->prepare($sql);
     $stmt->bindParam(":pID", $id);

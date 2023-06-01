@@ -45,6 +45,7 @@ $instrumentos = fnListInstrumentos();
                                 <a href="formulario-edita-instrumento.php?id=<?= $instrumento->idproduto ?>"
                                     class="btn btn-primary">Editar</a>
                                 <a href="excluirInstrumento.php?id=<?= $instrumento->idproduto ?>"
+                                    onclick="return confirm('Deseja realmente excluir?' ? gerirUsuario(<?= $instrumento->idproduto ?>, 'del') : '')"
                                     class="btn btn-danger">Excluir</a>
                             </td>
                         </tr>
@@ -60,7 +61,37 @@ $instrumentos = fnListInstrumentos();
             </div>
         </section>
     </main>
+    <script>
+    window.post = (data) => {
+        return fetch(
+                'set-session.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }
+            )
+            .then(response => {
+                // template string
+                console.log(`Requisição completa! Resposta:`, response);
+            });
+    }
 
+    function gerirUsuario(id, action) {
+
+        post({
+            data: id
+        });
+
+        url = 'excluirCliente.php';
+        if (action === 'edit')
+            url = 'formulario-edita-cliente.php';
+
+        // redirect do javacript
+        window.location.href = url;
+    }
+    </script>
 </body>
 
 </html>
