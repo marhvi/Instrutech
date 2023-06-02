@@ -30,8 +30,8 @@ Banco de Dados: Utilizamos um banco de dados relacional, como o MySQL, para arma
 
 ## Contribuidores
 
-Natâ Ferreira (@nataferreiragtr)
+Natã Ferreira (@nataferreiragtr)
 
-Marcos Vinicius (@marhvi)
+Marcus Vinicius (@marhvi)
 
 André Luis (@andre-621)
