@@ -1,9 +1,11 @@
 <?php
 require_once('repository/ClienteRepository.php');
 
+session_start();
+
+$id = filter_input(INPUT_POST, 'idCliente', FILTER_SANITIZE_NUMBER_INT);
 $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-$senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 $cep = filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_SPECIAL_CHARS);
 $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_SPECIAL_CHARS);
 $num = filter_input(INPUT_POST, 'num', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -14,18 +16,14 @@ $privilegio = filter_input(INPUT_POST, 'privilegio', FILTER_SANITIZE_SPECIAL_CHA
 
 
 
-if (empty($nome) || empty($email) || empty($senha)) {
-    $msg = "Preencher todos os campos primeiro.";
+if (fnUpdateCliente($id, $nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $privilegio)) {
+    $msg = "Sucesso ao gravar";
 } else {
-    if (fnAddCliente($nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $senha, $privilegio)) {
-        $msg = "Sucesso ao gravar";
-        fnAddLogin($email, $senha);
-    } else {
-        $msg = "Falha na gravação";
-    }
+    $msg = "Falha na gravação";
 }
 
-$page = "formulario-cadastro-cliente.php";
+$_SESSION['id'] = $id;
+$page = "formulario-edita-cliente.php";
 setcookie('notify', $msg, time() + 10, "instrutech/{$page}", 'localhost');
 header("location: {$page}");
 exit;
