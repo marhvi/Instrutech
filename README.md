@@ -18,13 +18,13 @@ Compra e Aluguel: Os usuários têm a opção de comprar o instrumento desejado 
 
 Carrinho de Compras: Os usuários podem adicionar instrumentos ao carrinho de compras e revisar o pedido antes de finalizá-lo.
 
-Desenvolvimento mobile 
+Desenvolvimento mobile: Feito em Angular
 
 ## Tecnologias Utilizadas
 
-Front-end: Utilizamos HTML, CSS e PHP para a construção da interface do usuário interativa e responsiva.
+Front-end: Utilizamos HTML, CSS e JS para a construção da interface do usuário interativa e responsiva.
 
-Back-end: Desenvolvemos o back-end usando uma combinação de linguagens e frameworks, com php, para lidar com a lógica de negócios.
+Back-end: Desenvolvemos o back-end usando uma combinação de linguagens e frameworks, como php, para lidar com a lógica de negócios.
 
 Banco de Dados: Utilizamos um banco de dados relacional, como o MySQL, para armazenar as informações dos instrumentos, usuários e transações.
 
