@@ -90,6 +90,14 @@ $instrumento = fnLocalizaInstrumentoPorId($id);
                             </select>
                             <div id="helperTipo" class="form-text">Selecione o tipo de negócio</div>
                         </div>
+                        <div class="mb-3 form-group">
+                            <label for="destaqueId" class="form-label">Destaque?</label>
+                            <select name="destaque" id="destaqueId" class="form-control">
+                                <option value="1" <?= $instrumento->destaque === '1' ? 'selected' : '' ?>>Sim</option>
+                                <option value="0" <?= $instrumento->destaque === '0' ? 'selected' : '' ?>>Não</option>
+                            </select>
+                            <div id="helperDestaque" class="form-text">Selecione se é destaque</div>
+                        </div>
 
                         <button type="submit" class="btn btn-dark">Enviar</button>
                         <div id="notify" class="form-text text-capitalize fs-4">

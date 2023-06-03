@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `valor` int(11) NOT NULL,
   `estado` enum('novo','usado') NOT NULL,
   `tipo` enum('venda','aluguel') NOT NULL,
+  `destaque` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`idproduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -89,7 +90,7 @@ INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, se
 
 ALTER TABLE `produto` AUTO_INCREMENT = 1;
 
-INSERT INTO produto (foto, nome, descricao, marca, valor, estado, tipo) 
+INSERT INTO produto (foto, nome, descricao, marca, valor, estado, tipo, destaque) 
 VALUES 
-('https://www.gov.br/funai/pt-br/assuntos/noticias/2022-02/cultura-saiba-mais-sobre-o-maraca-instrumento-musical-indigena/chocalhos_karaja.jpg/@@images/d7d6f961-6174-4b85-8cb1-e361a98f2dee.jpeg', 'Chocalho Maraca', "O maracá é um dos instrumentos musicais indígenas mais conhecidos, sendo seu nome muitas vezes utilizado como uma designação genérica para chocalhos. Consiste numa cabaça seca e oca com pequenas pedras, caroços ou sementes em seu interior, colocada na extremidade de um bastão, normalmente feito de madeira.", "Funai", "1000", 'usado', 'venda'), 
-('https://media.istockphoto.com/id/520688715/pt/foto/saxofone-alto-vista-lateral-em-fundo-branco.jpg?s=1024x1024&w=is&k=20&c=DeSHOTVRZRN47Dli7ZHySDn0iaPlRssbzF2u1rxFsTs=', "Saxofone", "O saxofone é um instrumento de sopro da família das madeiras que, curiosamente, ao contrário de todos os outros instrumentos desta família, nunca foi construído com este material. Fabricado em metal, possui um longo tubo com uma curvatura e se utiliza de uma palheta simples. Não faz parte dos instrumentos da orquestra, mas por possuir um som potente, foi adotado em bandas militares e em grupos populares, especialmente os de jazz.", "Yamaha", '750', 'novo', 'aluguel');
+('https://www.gov.br/funai/pt-br/assuntos/noticias/2022-02/cultura-saiba-mais-sobre-o-maraca-instrumento-musical-indigena/chocalhos_karaja.jpg/@@images/d7d6f961-6174-4b85-8cb1-e361a98f2dee.jpeg', 'Chocalho Maraca', "O maracá é um dos instrumentos musicais indígenas mais conhecidos, sendo seu nome muitas vezes utilizado como uma designação genérica para chocalhos. Consiste numa cabaça seca e oca com pequenas pedras, caroços ou sementes em seu interior, colocada na extremidade de um bastão, normalmente feito de madeira.", "Funai", "1000", 'usado', 'venda', 1), 
+('https://media.istockphoto.com/id/520688715/pt/foto/saxofone-alto-vista-lateral-em-fundo-branco.jpg?s=1024x1024&w=is&k=20&c=DeSHOTVRZRN47Dli7ZHySDn0iaPlRssbzF2u1rxFsTs=', "Saxofone", "O saxofone é um instrumento de sopro da família das madeiras que, curiosamente, ao contrário de todos os outros instrumentos desta família, nunca foi construído com este material. Fabricado em metal, possui um longo tubo com uma curvatura e se utiliza de uma palheta simples. Não faz parte dos instrumentos da orquestra, mas por possuir um som potente, foi adotado em bandas militares e em grupos populares, especialmente os de jazz.", "Yamaha", '750', 'novo', 'aluguel', 0);

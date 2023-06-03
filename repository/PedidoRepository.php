@@ -14,7 +14,6 @@ function fnAddPedido($data, $valortotal, $idproduto, $idcliente)
     $stmt->bindParam(":valortotal", $valortotal);
     $stmt->bindParam(":idproduto", $idproduto);
     $stmt->bindParam(":idcliente", $idcliente);
-    // $stmt->bindParam(":idfuncionario", $idfuncionario);
 
     if ($stmt->execute()) {
         return $con->lastInsertId();

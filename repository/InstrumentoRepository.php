@@ -1,11 +1,11 @@
 <?php
 require_once('Connection.php');
 
-function fnAddInstrumento($foto, $nome, $descricao, $marca, $valor, $estado, $tipo)
+function fnAddInstrumento($foto, $nome, $descricao, $marca, $valor, $estado, $tipo, $destaque)
 {
     $con = getConnection();
 
-    $sql = "insert into produto (foto, nome, descricao, marca, valor, estado, tipo) VALUES (:pFoto, :pNome, :pDescricao, :pMarca, :pValor, :pEstado, :pTipo)";
+    $sql = "INSERT INTO produto (foto, nome, descricao, marca, valor, estado, tipo, destaque) VALUES (:pFoto, :pNome, :pDescricao, :pMarca, :pValor, :pEstado, :pTipo, :pDestaque)";
 
     $stmt = $con->prepare($sql);
 
@@ -16,9 +16,11 @@ function fnAddInstrumento($foto, $nome, $descricao, $marca, $valor, $estado, $ti
     $stmt->bindParam(":pValor", $valor);
     $stmt->bindParam(":pEstado", $estado);
     $stmt->bindParam(":pTipo", $tipo);
+    $stmt->bindParam(":pDestaque", $destaque);
 
     return $stmt->execute();
 }
+
 
 function fnListInstrumentos()
 {
@@ -68,11 +70,28 @@ function fnLocalizaInstrumentoPorId($id)
     return null;
 }
 
-function fnUpdateInstrumento($id, $foto, $nome, $descricao, $marca, $valor, $estado, $tipo)
+function fnLocalizaInstrumentoPorDestaque($destaque)
 {
     $con = getConnection();
 
-    $sql = "UPDATE produto SET foto = :pFoto, nome = :pNome, descricao = :pDescricao, marca = :pMarca, valor = :pValor, estado = :pEstado, tipo = :pTipo WHERE idproduto = :pID";
+    $sql = "SELECT * FROM produto WHERE destaque = :pDestaque";
+
+    $stmt = $con->prepare($sql);
+    $stmt->bindParam(":pDestaque", $destaque);
+
+    if ($stmt->execute()) {
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    return null;
+}
+
+
+function fnUpdateInstrumento($id, $foto, $nome, $descricao, $marca, $valor, $estado, $tipo, $destaque)
+{
+    $con = getConnection();
+
+    $sql = "UPDATE produto SET foto = :pFoto, nome = :pNome, descricao = :pDescricao, marca = :pMarca, valor = :pValor, estado = :pEstado, tipo = :pTipo, destaque = :pDestaque WHERE idproduto = :pID";
 
     $stmt = $con->prepare($sql);
     $stmt->bindParam(":pID", $id);
@@ -83,6 +102,7 @@ function fnUpdateInstrumento($id, $foto, $nome, $descricao, $marca, $valor, $est
     $stmt->bindParam(":pValor", $valor);
     $stmt->bindParam(":pEstado", $estado);
     $stmt->bindParam(":pTipo", $tipo);
+    $stmt->bindParam(":pDestaque", $destaque);
 
     return $stmt->execute();
 }

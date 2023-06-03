@@ -32,12 +32,9 @@
                     <legend>Cadastro de Instrumento</legend>
                     <form action="registraInstrumento.php" method="post" class="form" enctype="multipart/form-data">
                         <div class="card" style="height: auto; width: auto;">
-                            <svg class=" card-img-top" xmlns="http://www.w3.org/2000/svg" role="img"
-                                aria-label="Placeholder: Foto do Instrumento" preserveAspectRatio="xMidYMid slice"
-                                focusable="false" style="height: auto; width: auto;">
+                            <svg class=" card-img-top" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto do Instrumento" preserveAspectRatio="xMidYMid slice" focusable="false" style="height: auto; width: auto;">
                                 <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#868e96"></rect><text x="40%" y="50%"
-                                    fill="#dee2e6" dy=".3em">Foto do Instrumento</text>
+                                <rect width="100%" height="100%" fill="#868e96"></rect><text x="40%" y="50%" fill="#dee2e6" dy=".3em">Foto do Instrumento</text>
                             </svg>
                         </div>
                         <br>
@@ -48,26 +45,22 @@
                         </div>
                         <div class="mb-3 form-group">
                             <label for="nomeId" class="form-label">Nome</label>
-                            <input type="text" name="nome" id="nomeId" class="form-control"
-                                placeholder="Informe o nome completo">
+                            <input type="text" name="nome" id="nomeId" class="form-control" placeholder="Informe o nome completo">
                             <div id="helperNome" class="form-text">Informe o nome completo</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="descricaoId" class="form-label">Descrição</label>
-                            <textarea name="descricao" id="descricaoId" class="form-control"
-                                placeholder="Informe a descrição"></textarea>
+                            <textarea name="descricao" id="descricaoId" class="form-control" placeholder="Informe a descrição"></textarea>
                             <div id="helperDescricao" class="form-text">Informe a descrição</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="marcaId" class="form-label">Marca</label>
-                            <input type="text" name="marca" id="marcaId" class="form-control"
-                                placeholder="Informe a marca">
+                            <input type="text" name="marca" id="marcaId" class="form-control" placeholder="Informe a marca">
                             <div id="helperMarca" class="form-text">Informe a marca</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="valorId" class="form-label">Valor</label>
-                            <input type="text" name="valor" id="valorId" class="form-control"
-                                placeholder="Informe o valor">
+                            <input type="text" name="valor" id="valorId" class="form-control" placeholder="Informe o valor">
                             <div id="helperValor" class="form-text">Informe o valor</div>
                         </div>
                         <div class="mb-3 form-group">
@@ -85,6 +78,14 @@
                                 <option value="aluguel">Aluguel</option>
                             </select>
                             <div id="helperTipo" class="form-text">Selecione o tipo</div>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="destaqueId" class="form-label">Destaque?</label>
+                            <select name="destaque" id="destaqueId" class="form-control">
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
+                            <div id="helperDestaque" class="form-text">Selecione se é destaque</div>
                         </div>
                         <button type="submit" class="btn btn-dark">Enviar</button>
                         <div id="notify" class="form-text text-capitalize fs-4">

@@ -43,6 +43,9 @@ if (isset($_SESSION['login'])) {
                 <p class="p2">
                     <b> Descrição:</b> <?= "$instrumento->descricao" ?>
                 </p>
+                <p class="p2">
+                    <b> Estado:</b> <?= "$instrumento->estado" ?>
+                </p>
                 <p class="p3">
                     <b> Marca:</b> <?= "$instrumento->marca" ?>
                 </p>
@@ -53,7 +56,11 @@ if (isset($_SESSION['login'])) {
                     <input type="hidden" name="valortotal" value="<?= $instrumento->valor ?>">
                     <input type="hidden" name="idproduto" value="<?= $instrumento->idproduto ?>">
                     <input type="hidden" name="idcliente" value="<?= $cliente->idcliente ?? '' ?>">
-                    <button class="botao" type="submit">COMPRAR</button>
+                    <?php if ($instrumento->tipo == 'venda') : ?>
+                        <button class="botao" type="submit">COMPRAR</button>
+                    <?php else : ?>
+                        <button class="botao" type="submit">ALUGAR</button>
+                    <?php endif; ?>
                 </form>
             </div>
         </section>
