@@ -36,7 +36,7 @@ function fnAtualizaSenha($email, $senha)
 {
     $con = getConnection();
 
-    $sql = "update login set senha = :pSenha where email = :pEmail";
+    $sql = "update cliente set senha = :pSenha where email = :pEmail";
 
     $stmt = $con->prepare($sql);
     $stmt->bindParam(":pEmail", $email);

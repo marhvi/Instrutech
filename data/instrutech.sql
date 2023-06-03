@@ -12,12 +12,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Banco de dados: `instrutech`
 --
@@ -46,24 +40,6 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   PRIMARY KEY (`idcliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `funcionario`
---
-
--- CREATE TABLE IF NOT EXISTS `funcionario` (
---   `idfuncionario` int(11) AUTO_INCREMENT NULL,
---   `nome` varchar(35) NOT NULL,
---   `cargo` ENUM('funcionario', 'administrador') NOT NULL DEFAULT 'funcionario',
---   `email` varchar(30) NOT NULL,
---   `senha` varchar(8) NOT NULL,
---   PRIMARY KEY (`idfuncionario`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
-
 -- --------------------------------------------------------
 
 --
@@ -82,11 +58,6 @@ CREATE TABLE IF NOT EXISTS `produto` (
   PRIMARY KEY (`idproduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 -- --------------------------------------------------------
 
 --
@@ -99,29 +70,15 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `valortotal` int(11) NOT NULL,
   `idproduto` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
-  -- `idfuncionario` int(11) NULL,
   PRIMARY KEY (`idpedido`),
   KEY `idcliente` (`idcliente`),
-  -- KEY `idfuncionario` (`idfuncionario`),
   KEY `idproduto` (`idproduto`),
   CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`),
-  -- CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`idfuncionario`) REFERENCES `funcionario` (`idfuncionario`),
   CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`idproduto`) REFERENCES `produto` (`idproduto`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- CREATE OR REPLACE TABLE login(
---     id int PRIMARY KEY AUTO_INCREMENT,
---     email varchar(250) NOT NULL unique,
---     senha varchar(255) NOT NULL,
---     created_at TIMESTAMP NOT NULL default CURRENT_TIMESTAMP
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- INSERT INTO login(email, senha) VALUES ('admin@instrutech.com', md5('admin@123'));
-
-
 DELETE FROM `cliente`;
 DELETE FROM `produto`;
-
 
 ALTER TABLE `cliente` AUTO_INCREMENT = 1;
 

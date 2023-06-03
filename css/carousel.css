@@ -1,16 +1,17 @@
-  .carousel {
-    display: flex;
-    overflow: hidden;
-    width: 500px;
-    height: 300px;
-  }
+ .carousel {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+}
 
-  .carousel img {
-    width: auto;
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
+ .carousel img {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
 
   .carousel img:hover  {
     transform: scale(1.2);
@@ -34,3 +35,16 @@
   .carousel .next {
     right: 10px;
   }
+
+  /* Responsivo */
+ @media screen and (max-width: 768px) {
+  .carousel {
+    max-width: 400px;
+  }
+ }
+
+ @media screen and (max-width: 576px) {
+  .carousel {
+    max-width: 300px;
+  }
+ }

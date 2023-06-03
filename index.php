@@ -52,10 +52,10 @@ $nome = filter_input(INPUT_GET, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
                 <hr>
                 <div class="row" style="margin: 3% 0;">
                     <?php
-    $cont = 0;
-    foreach (fnLocalizaInstrumentoPorNome($nome) as $instrumento) :
-    ?>
-                    <div class="col-sm-3">
+                    $cont = 0;
+                    foreach (fnLocalizaInstrumentoPorNome($nome) as $instrumento) :
+                    ?>
+                    <div class="col-sm-6 col-md-3">
                         <div class="card">
                             <img src="<?= $instrumento->foto ?>" class="card-img-top" alt="foto-instrumento">
                             <div class="card-body">
@@ -67,12 +67,12 @@ $nome = filter_input(INPUT_GET, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
                         </div>
                     </div>
                     <?php
-    $cont++;
-    if ($cont % 4 === 0) {
-        echo '</div><div class="row" style="margin: 3% 0;">';
-    }
-    endforeach;
-    ?>
+                        $cont++;
+                        if ($cont % 4 === 0) {
+                            echo '</div><div class="row" style="margin: 3% 0;">';
+                        }
+                    endforeach;
+                    ?>
                 </div>
 
             </div>
