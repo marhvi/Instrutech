@@ -7,8 +7,7 @@
         <a class="navbar-brand" href="#">
             <img src="images/logo.png" alt="logo" id="logo">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -24,22 +23,21 @@
                     </form>
                 </li>
                 <?php if (isset($_SESSION['login']) && $_SESSION['login']->idcliente == 1) : ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Listas
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="listagem-de-clientes.php">Clientes</a>
-                        <a class="dropdown-item" href="listagem-de-instrumentos.php">Instrumentos</a>
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Listas
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="listagem-de-clientes.php">Clientes</a>
+                            <a class="dropdown-item" href="listagem-de-instrumentos.php">Instrumentos</a>
+                        </div>
+                    </li>
                 <?php endif; ?>
                 <?php if (empty(isset($_SESSION['login']))) : ?>
-                <li><a href="login.php" class="login-btn">Login</a></li>
+                    <li><a href="login.php" class="login-btn">Login</a></li>
                 <?php else : ?>
-                <li><a href="minhaConta.php" class="">Minha Conta</a></li>
-                <li><a href="logout.php" class="login-btn">Logout</a></li>
+                    <li><a href="minhaConta.php" class="">Minha Conta</a></li>
+                    <li><a href="logout.php" class="login-btn">Logout</a></li>
                 <?php endif; ?>
 
 

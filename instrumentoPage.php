@@ -34,37 +34,47 @@ if (isset($_SESSION['login'])) {
 <body>
     <?php include('navbar.php') ?>
     <main>
-        <section>
-            <img src="<?= "$instrumento->foto" ?>" class="foto-produto">
-            <div class="texto">
-                <h4 class="p1">
-                    <b> Nome:</b> <?= "$instrumento->nome" ?>
-                </h4>
-                <p class="p2">
-                    <b> Descrição:</b> <?= "$instrumento->descricao" ?>
-                </p>
-                <p class="p2">
-                    <b> Estado:</b> <?= "$instrumento->estado" ?>
-                </p>
-                <p class="p3">
-                    <b> Marca:</b> <?= "$instrumento->marca" ?>
-                </p>
-                <p class="p4">
-                    <b> R$ </b> <?= "$instrumento->valor" ?>
-                </p>
-                <form method="post" action="registrarPedido.php">
-                    <input type="hidden" name="valortotal" value="<?= $instrumento->valor ?>">
-                    <input type="hidden" name="idproduto" value="<?= $instrumento->idproduto ?>">
-                    <input type="hidden" name="idcliente" value="<?= $cliente->idcliente ?? '' ?>">
-                    <?php if ($instrumento->tipo == 'venda') : ?>
-                        <button class="botao" type="submit">COMPRAR</button>
-                    <?php else : ?>
-                        <button class="botao" type="submit">ALUGAR</button>
-                    <?php endif; ?>
-                </form>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="<?= $instrumento->foto ?>" class="img-fluid mt-3" width="auto">
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <br>
+                        <br>
+                        <h4 class="p1">
+                            <b> Nome:</b> <?= $instrumento->nome ?>
+                        </h4>
+                        <p class="p2">
+                            <b> Descrição:</b> <?= $instrumento->descricao ?>
+                        </p>
+                        <p class="p2">
+                            <b> Estado:</b> <?= $instrumento->estado ?>
+                        </p>
+                        <p class="p3">
+                            <b> Marca:</b> <?= $instrumento->marca ?>
+                        </p>
+                        <p class="p4">
+                            <b> R$ </b> <?= number_format($instrumento->valor, 2, ',', '.') ?>
+                        </p>
+                        <form method="post" action="registrarPedido.php">
+                            <input type="hidden" name="valortotal" value="<?= $instrumento->valor ?>">
+                            <input type="hidden" name="idproduto" value="<?= $instrumento->idproduto ?>">
+                            <input type="hidden" name="idcliente" value="<?= $cliente->idcliente ?? '' ?>">
+                            <?php if ($instrumento->tipo == 'venda') : ?>
+                                <button class="botao" type="submit">COMPRAR</button>
+                            <?php else : ?>
+                                <button class="botao" type="submit">ALUGAR</button>
+                            <?php endif; ?>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
     <?php include('footer.php'); ?>
 </body>
 

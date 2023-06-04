@@ -153,8 +153,9 @@ html, body {
   }
   
   .texto {
-    margin-left: 700px;
+    margin-left: 600px;
     margin-top: -170px;
+    word-wrap: break-word;
   }
   
   .p1,
@@ -175,6 +176,18 @@ html, body {
   .botao:hover {
     transform: scale(1.1);
   }
+
+  @media (min-width: 768px) {
+    .foto-produto {
+        margin-left: 20%;
+        margin-top: 10%;
+    }
+
+    .texto {
+        margin-left: 0;
+        margin-top: 0;
+    }
+}
   
   /*Minha Conta*/
   .my-account-container,
