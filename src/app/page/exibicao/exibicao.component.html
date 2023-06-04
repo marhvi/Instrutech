@@ -1,0 +1,25 @@
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <h1 class="text-center">Clientes</h1>
+        <div class="col-sm-6 col-md-3" *ngFor="let infos of clientes">
+            <div class="card mb-3">
+                <img [src]="infos.url" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{infos.nome}}</h5>
+                    <p class="card-text">{{infos.tipo}}</p>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-danger btn-block mb-3" (click)="excluir(infos.id)">Excluir</button>
+                        </div>
+
+                        <div class="col-6">
+                            <button class="btn btn-success btn-block"
+                                [routerLink]="['/update', infos.id]">Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

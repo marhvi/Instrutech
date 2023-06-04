@@ -1,0 +1,104 @@
+<div class="container mt-5">
+    <h1 class="text-center">Formulário</h1>
+
+    <form [formGroup]="updateForm" (submit)="atualizar()">
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>Nome</label>
+                <input class="form-control" type="text" placeholder="Informe o nome completo" formControlName="nome">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>Email</label>
+                <input class="form-control" type="email" placeholder="Informe o email" formControlName="email">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>Senha</label>
+                <input class="form-control" type="password" placeholder="Informe a senha" formControlName="senha">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>CEP</label>
+                <input class="form-control" type="text" placeholder="Informe o CEP" formControlName="cep">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>Endereço</label>
+                <input class="form-control" type="text" placeholder="Informe o endereço" formControlName="endereco">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>Número</label>
+                <input class="form-control" type="text" placeholder="Informe o número" formControlName="num">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>Bairro</label>
+                <input class="form-control" type="text" placeholder="Informe o bairro" formControlName="bairro">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>Cidade</label>
+                <input class="form-control" type="text" placeholder="Informe a cidade" formControlName="cidade">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label>Estado</label>
+                <select class="form-control" formControlName="estado">
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+        </div>
+
+    </form>
+</div>
