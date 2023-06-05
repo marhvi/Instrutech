@@ -3,6 +3,7 @@ include('config.php');
 require_once('repository/ClienteRepository.php');
 require_once('repository/InstrumentoRepository.php');
 require_once('repository/PedidoRepository.php');
+require_once('validador.php');
 
 $idcliente = $_SESSION['login']->idcliente;
 $cliente = fnLocalizaClientePorId($idcliente);

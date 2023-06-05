@@ -1,6 +1,7 @@
 <?php
 include('config.php');
 require_once('repository/ClienteRepository.php');
+require_once('validadorAdmin.php');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
@@ -145,8 +146,8 @@ $admin = $cliente->privilegio == 'admin';
                             <label for="privilegioId" class="form-label">Privilegio</label>
                             <select name="privilegio" id="privilegioId" class="form-control">
                                 <option value="admin" <?= $cliente->idcliente == 1 ? 'selected' : '' ?>
-                                    <?= $cliente->idcliente == 1 ? '' : 'disabled' ?>>Administrador</option>
-                                <?php if ($admin && $cliente->idcliente != 1) : ?>
+                                    <?= $cliente->idcliente == 1 ? 'disabled' : 'hidden' ?>>Administrador</option>
+                                <?php if ($admin || $cliente->idcliente != 1) : ?>
                                 <option value="compra" <?= $cliente->privilegio == 'compra' ? 'selected' : '' ?>>Apenas
                                     Comprador</option>
                                 <option value="venda" <?= $cliente->privilegio == 'venda' ? 'selected' : '' ?>>Vendedor
@@ -155,9 +156,6 @@ $admin = $cliente->privilegio == 'admin';
                             </select>
                             <div id="helperPrivilegio" class="form-text">Selecione o seu privilegio</div>
                         </div>
-
-
-
                         <button type="submit" class="btn btn-dark">Enviar</button>
                         <div id="notify" class="form-text text-capitalize fs-4">
                             <?= isset($_COOKIE['notify']) ? $_COOKIE['notify'] : '' ?></div>

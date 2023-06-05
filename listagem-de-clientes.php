@@ -1,6 +1,7 @@
 <?php
 include('config.php');
 require_once('repository/ClienteRepository.php');
+require_once('validadorAdmin.php');
 
 $clientes = fnListClientes();
 
@@ -44,8 +45,8 @@ $clientes = fnListClientes();
                             <td>
                                 <a href="formulario-edita-cliente.php?id=<?= $cliente->idcliente ?>"
                                     class="btn btn-primary">Editar</a>
-                                <a href="excluirCliente.php?id=<?= $cliente->idcliente ?>"
-                                    class="btn btn-danger">Excluir</a>
+                                <a href="excluirCliente.php?id=<?= $cliente->idcliente ?>" class="btn btn-danger"
+                                    onclick="return confirmDelete()">Excluir</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -64,8 +65,11 @@ $clientes = fnListClientes();
             </div>
         </section>
     </main>
-
-
+    <script>
+    function confirmDelete() {
+        return confirm("Tem certeza de que deseja excluir este instrumento? Essa ação não pode ser desfeita.");
+    }
+    </script>
 </body>
 
 </html>

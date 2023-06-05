@@ -24,9 +24,11 @@ if (!isset($_COOKIE['error'])) {
 </head>
 
 <body>
+    <?php include('navbar.php'); ?>
     <div class="col-6 offset-3">
         <h1><?= $_COOKIE['error'] ?></h1>
     </div>
+    <?php include('footer.php'); ?>
 </body>
 
 </html>

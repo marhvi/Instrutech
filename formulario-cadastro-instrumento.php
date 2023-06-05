@@ -18,6 +18,18 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
     <title>Página
         do Instrumento</title>
 
@@ -40,32 +52,33 @@
                         <br>
                         <div class="mb-3 form-group">
                             <label for="fotoId" class="form-label">Foto</label>
-                            <input type="file" name="foto" id="fotoId" class="form-control">
+                            <input type="file" name="foto" id="fotoId" class="form-control" required>
                             <div id="helperFoto" class="form-text">Importe a foto</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="nomeId" class="form-label">Nome</label>
-                            <input type="text" name="nome" id="nomeId" class="form-control" placeholder="Informe o nome completo">
+                            <input type="text" name="nome" id="nomeId" class="form-control" placeholder="Informe o nome completo" required>
                             <div id="helperNome" class="form-text">Informe o nome completo</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="descricaoId" class="form-label">Descrição</label>
-                            <textarea name="descricao" id="descricaoId" class="form-control" placeholder="Informe a descrição"></textarea>
+                            <textarea name="descricao" id="descricaoId" class="form-control" placeholder="Informe a descrição" required></textarea>
                             <div id="helperDescricao" class="form-text">Informe a descrição</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="marcaId" class="form-label">Marca</label>
-                            <input type="text" name="marca" id="marcaId" class="form-control" placeholder="Informe a marca">
+                            <input type="text" name="marca" id="marcaId" class="form-control" placeholder="Informe a marca" required>
                             <div id="helperMarca" class="form-text">Informe a marca</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="valorId" class="form-label">Valor</label>
-                            <input type="text" name="valor" id="valorId" class="form-control" placeholder="Informe o valor">
+                            <input type="number" name="valor" id="valorId" class="form-control" placeholder="Informe o valor" required>
                             <div id="helperValor" class="form-text">Informe o valor</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="estadoId" class="form-label">Estado</label>
-                            <select name="estado" id="estadoId" class="form-control">
+                            <select name="estado" id="estadoId" class="form-control" required>
+                                <option value="" selected disabled>Selecione o estado</option>
                                 <option value="novo">Novo</option>
                                 <option value="usado">Usado</option>
                             </select>
@@ -73,7 +86,8 @@
                         </div>
                         <div class="mb-3 form-group">
                             <label for="tipoId" class="form-label">Tipo</label>
-                            <select name="tipo" id="tipoId" class="form-control">
+                            <select name="tipo" id="tipoId" class="form-control" required>
+                                <option value="" selected disabled>Selecione o tipo</option>
                                 <option value="venda">Venda</option>
                                 <option value="aluguel">Aluguel</option>
                             </select>
@@ -81,7 +95,8 @@
                         </div>
                         <div class="mb-3 form-group">
                             <label for="destaqueId" class="form-label">Destaque?</label>
-                            <select name="destaque" id="destaqueId" class="form-control">
+                            <select name="destaque" id="destaqueId" class="form-control" required>
+                                <option value="" selected disabled>Selecione se é destaque</option>
                                 <option value="1">Sim</option>
                                 <option value="0">Não</option>
                             </select>

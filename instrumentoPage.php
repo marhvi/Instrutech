@@ -24,7 +24,8 @@ if (isset($_SESSION['login'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link href="css/style.css" rel="stylesheet">
 
@@ -63,9 +64,9 @@ if (isset($_SESSION['login'])) {
                             <input type="hidden" name="idproduto" value="<?= $instrumento->idproduto ?>">
                             <input type="hidden" name="idcliente" value="<?= $cliente->idcliente ?? '' ?>">
                             <?php if ($instrumento->tipo == 'venda') : ?>
-                                <button class="botao" type="submit">COMPRAR</button>
+                            <button class="botao" type="submit" onclick="return confirmPedido()">COMPRAR</button>
                             <?php else : ?>
-                                <button class="botao" type="submit">ALUGAR</button>
+                            <button class="botao" type="submit" onclick="return confirmPedido()">ALUGAR</button>
                             <?php endif; ?>
                         </form>
                     </div>
@@ -73,7 +74,11 @@ if (isset($_SESSION['login'])) {
             </div>
         </section>
     </main>
-
+    <script>
+    function confirmPedido() {
+        return confirm("Deseja realmente concluir a operação?");
+    }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
     <?php include('footer.php'); ?>
 </body>

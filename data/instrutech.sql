@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `bairro` varchar(25) NOT NULL,
   `cidade` varchar(20) NOT NULL,
   `estado` enum('AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO') NOT NULL,
-  `email` varchar(20) NOT NULL,
+  `email` varchar(40) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `privilegio` enum('compra', 'venda', 'admin') NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -84,7 +84,9 @@ DELETE FROM `produto`;
 ALTER TABLE `cliente` AUTO_INCREMENT = 1;
 
 INSERT INTO cliente ( nome, cep, endereco, num, bairro, cidade, estado, email, senha, privilegio) 
-            VALUES ('Marcus Vinicius', 123456789,  "Rua B. de Jaceguai", 0, "Ponta d'Areia", 'Niterói', 'RJ', 'mv@email.com', md5(12345678), 'admin');
+            VALUES ('Administrador', 123456789,  "Rua 0", 0, "Tijuca", 'Rio de Janeiro', 'RJ', 'admin@instrutech.com', md5(12345678), 'admin');
+INSERT INTO cliente ( nome, cep, endereco, num, bairro, cidade, estado, email, senha, privilegio) 
+            VALUES ('Marcus Vinicius', 123456789,  "Rua B. de Jaceguai", 0, "Ponta d'Areia", 'Niteroi', 'RJ', 'marcusvinicius2747@gmail.com', md5(12345678), 'admin');
 INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha, privilegio) 
             VALUES ('Gabigol', 987654321,  "Rua da Artilharia", 9, "Leblon", 'Rio de Janeiro', 'RJ', 'lilgabi@mengo.com', md5(12345678), 'compra');
 INSERT INTO cliente (nome, cep, endereco, num, bairro, cidade, estado, email, senha, privilegio) 
@@ -94,8 +96,8 @@ ALTER TABLE `produto` AUTO_INCREMENT = 1;
 
 INSERT INTO produto (foto, nome, descricao, marca, valor, estado, tipo, destaque) 
 VALUES 
-('https://www.gov.br/funai/pt-br/assuntos/noticias/2022-02/cultura-saiba-mais-sobre-o-maraca-instrumento-musical-indigena/chocalhos_karaja.jpg/@@images/d7d6f961-6174-4b85-8cb1-e361a98f2dee.jpeg', 'Chocalho Maraca', "O maracá é um dos instrumentos musicais indígenas mais conhecidos, sendo seu nome muitas vezes utilizado como uma designação genérica para chocalhos. Consiste numa cabaça seca e oca com pequenas pedras, caroços ou sementes em seu interior, colocada na extremidade de um bastão, normalmente feito de madeira.", "Funai", "1000", 'usado', 'venda', 1), 
-('https://media.istockphoto.com/id/520688715/pt/foto/saxofone-alto-vista-lateral-em-fundo-branco.jpg?s=1024x1024&w=is&k=20&c=DeSHOTVRZRN47Dli7ZHySDn0iaPlRssbzF2u1rxFsTs=', "Saxofone", "O saxofone é um instrumento de sopro da família das madeiras que, curiosamente, ao contrário de todos os outros instrumentos desta família, nunca foi construído com este material. Fabricado em metal, possui um longo tubo com uma curvatura e se utiliza de uma palheta simples. Não faz parte dos instrumentos da orquestra, mas por possuir um som potente, foi adotado em bandas militares e em grupos populares, especialmente os de jazz.", "Yamaha", '750', 'novo', 'aluguel', 0), 
-('https://fujisom.com.br/uploads/produto_fotos/20210913114251_fender.png', 'Guitarra Eletrica','Guitarra elétrica modelo Stratocaster, ideal para músicos profissionais. Possui corpo em mogno, captadores de alta qualidade e design moderno.','Fender', 1999.99, 'novo', 'venda', 1),
-('https://http2.mlstatic.com/D_NQ_NP_654813-MLA50109939044_052022-O.webp','Teclado Digital','Teclado digital com 61 teclas sensíveis ao toque, diversos timbres e ritmos programáveis. Perfeito para iniciantes e músicos intermediários.','Yamaha',699.99, 'novo','venda', 0), 
-('https://a-static.mlcdn.com.br/800x560/bateria-acustica-pearl-exx725sp-c760-exx-725-shell-pack/cheirodemusica1/16011069008/c132dd1dad31a5116c73e702a0d114dc.jpeg','Bateria Acústica','Bateria acústica profissional de 5 peças, construída em madeira de alta qualidade. Acompanha pratos, pedais e banco.','Pearl', 2999.99,'usado','venda', 1);
+('https://www.gov.br/funai/pt-br/assuntos/noticias/2022-02/cultura-saiba-mais-sobre-o-maraca-instrumento-musical-indigena/chocalhos_karaja.jpg/@@images/d7d6f961-6174-4b85-8cb1-e361a98f2dee.jpeg', 'Chocalho Maraca', "O maraca e um dos instrumentos musicais indigenas mais conhecidos, sendo seu nome muitas vezes utilizado como um nome generico para chocalhos. Consiste numa cabaca seca e oca com pequenas pedras, carocos ou sementes em seu interior, colocada na extremidade de um bastao, normalmente feito de madeira.", "Funai", "1000", 'usado', 'venda', 1), 
+('https://media.istockphoto.com/id/520688715/pt/foto/saxofone-alto-vista-lateral-em-fundo-branco.jpg?s=1024x1024&w=is&k=20&c=DeSHOTVRZRN47Dli7ZHySDn0iaPlRssbzF2u1rxFsTs=', "Saxofone", "O saxofone e um instrumento de sopro da família das madeiras que, curiosamente, ao contrario de todos os outros instrumentos desta familia, nunca foi construido com este material. Fabricado em metal, possui um longo tubo com uma curvatura e se utiliza de uma palheta simples. Nao faz parte dos instrumentos da orquestra, mas por possuir um som potente, foi adotado em bandas militares e em grupos populares, especialmente os de jazz.", "Yamaha", '750', 'novo', 'aluguel', 0), 
+('https://fujisom.com.br/uploads/produto_fotos/20210913114251_fender.png', 'Guitarra Eletrica','Guitarra eletrica modelo Stratocaster, ideal para musicos profissionais. Possui corpo em mogno, captadores de alta qualidade e design moderno.','Fender', 1999.99, 'novo', 'venda', 1),
+('https://http2.mlstatic.com/D_NQ_NP_654813-MLA50109939044_052022-O.webp','Teclado Digital','Teclado digital com 61 teclas sensiveis ao toque, diversos timbres e ritmos programaveis. Perfeito para iniciantes e musicos intermediarios.','Yamaha',699.99, 'novo','venda', 0), 
+('https://a-static.mlcdn.com.br/800x560/bateria-acustica-pearl-exx725sp-c760-exx-725-shell-pack/cheirodemusica1/16011069008/c132dd1dad31a5116c73e702a0d114dc.jpeg','Bateria Acustica','Bateria acustica profissional de 5 pecas, construida em madeira de alta qualidade. Acompanha pratos, pedais e banco.','Pearl', 2999.99,'usado','venda', 1);
