@@ -1,15 +1,11 @@
 <?php
 include('config.php');
 require_once('repository/ClienteRepository.php');
-require_once('validadorAdmin.php');
+require_once('validador.php');
 
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$idcliente = $_SESSION['login']->idcliente;
+$cliente = fnLocalizaClientePorId($idcliente);
 
-if (!isset($id)) {
-    $id = $_SESSION['login']->idcliente;
-}
-$cliente = fnLocalizaClientePorId($id);
-$admin = $cliente->privilegio == 'admin';
 ?>
 
 <!doctype html>
@@ -53,50 +49,42 @@ $admin = $cliente->privilegio == 'admin';
                         </div>
                         <div class="mb-3 form-group">
                             <label for="nomeId" class="form-label">Nome</label>
-                            <input type="text" name="nome" id="nomeId" class="form-control"
-                                placeholder="Informe o nome completo" value="<?= $cliente->nome ?>">
+                            <input type="text" name="nome" id="nomeId" class="form-control" placeholder="Informe o nome completo" value="<?= $cliente->nome ?>">
                             <div id="helperNome" class="form-text">Informe o nome completo</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="emailId" class="form-label">Email</label>
-                            <input type="email" name="email" id="emailId" class="form-control"
-                                placeholder="Informe o email" value="<?= $cliente->email ?>">
+                            <input type="email" name="email" id="emailId" class="form-control" placeholder="Informe o email" value="<?= $cliente->email ?>">
                             <div id="helperEmail" class="form-text">Informe o email</div>
                         </div>
-                        <div class="mb-3 form-group">
+                        <!-- <div class="mb-3 form-group">
                             <label for="senhaId" class="form-label">Senha</label>
-                            <input type="password" name="senha" id="senhaId" class="form-control"
-                                placeholder="Informe a senha" value="<?= $cliente->senha ?>">
+                            <input type="password" name="senha" id="senhaId" class="form-control" placeholder="Informe a senha" value="<?= $cliente->senha ?>">
                             <div id="helperSenha" class="form-text">Informe a senha</div>
-                        </div>
+                        </div> -->
                         <div class="mb-3 form-group">
                             <label for="cepId" class="form-label">CEP</label>
-                            <input type="text" name="cep" id="cepId" class="form-control" placeholder="Informe o CEP"
-                                value="<?= $cliente->cep ?>">
+                            <input type="text" name="cep" id="cepId" class="form-control" placeholder="Informe o CEP" value="<?= $cliente->cep ?>">
                             <div id="helperCep" class="form-text">Informe o CEP</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="enderecoId" class="form-label">Endereço</label>
-                            <input type="text" name="endereco" id="enderecoId" class="form-control"
-                                placeholder="Informe o endereço" value="<?= $cliente->endereco ?>">
+                            <input type="text" name="endereco" id="enderecoId" class="form-control" placeholder="Informe o endereço" value="<?= $cliente->endereco ?>">
                             <div id="helperEndereco" class="form-text">Informe o endereço</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="numId" class="form-label">Número</label>
-                            <input type="text" name="num" id="numId" class="form-control" placeholder="Informe o número"
-                                value="<?= $cliente->num ?>">
+                            <input type="text" name="num" id="numId" class="form-control" placeholder="Informe o número" value="<?= $cliente->num ?>">
                             <div id="helperNum" class="form-text">Informe o número</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="bairroId" class="form-label">Bairro</label>
-                            <input type="text" name="bairro" id="bairroId" class="form-control"
-                                placeholder="Informe o bairro" value="<?= $cliente->bairro ?>">
+                            <input type="text" name="bairro" id="bairroId" class="form-control" placeholder="Informe o bairro" value="<?= $cliente->bairro ?>">
                             <div id="helperBairro" class="form-text">Informe o bairro</div>
                         </div>
                         <div class="mb-3 form-group">
                             <label for="cidadeId" class="form-label">Cidade</label>
-                            <input type="text" name="cidade" id="cidadeId" class="form-control"
-                                placeholder="Informe a cidade" value="<?= $cliente->cidade ?>">
+                            <input type="text" name="cidade" id="cidadeId" class="form-control" placeholder="Informe a cidade" value="<?= $cliente->cidade ?>">
                             <div id="helperCidade" class="form-text">Informe a cidade</div>
                         </div>
                         <div class="mb-3 form-group">
@@ -145,13 +133,12 @@ $admin = $cliente->privilegio == 'admin';
                         <div class="mb-3 form-group">
                             <label for="privilegioId" class="form-label">Privilegio</label>
                             <select name="privilegio" id="privilegioId" class="form-control">
-                                <option value="admin" <?= $cliente->idcliente == 1 ? 'selected' : '' ?>
-                                    <?= $cliente->idcliente == 1 ? 'disabled' : 'hidden' ?>>Administrador</option>
+                                <option value="admin" <?= $cliente->idcliente == 1 ? 'selected' : '' ?> <?= $cliente->idcliente == 1 ? 'disabled' : 'hidden' ?>>Administrador</option>
                                 <?php if ($admin || $cliente->idcliente != 1) : ?>
-                                <option value="compra" <?= $cliente->privilegio == 'compra' ? 'selected' : '' ?>>Apenas
-                                    Comprador</option>
-                                <option value="venda" <?= $cliente->privilegio == 'venda' ? 'selected' : '' ?>>Vendedor
-                                    e Comprador</option>
+                                    <option value="compra" <?= $cliente->privilegio == 'compra' ? 'selected' : '' ?>>Apenas
+                                        Comprador</option>
+                                    <option value="venda" <?= $cliente->privilegio == 'venda' ? 'selected' : '' ?>>Vendedor
+                                        e Comprador</option>
                                 <?php endif; ?>
                             </select>
                             <div id="helperPrivilegio" class="form-text">Selecione o seu privilegio</div>

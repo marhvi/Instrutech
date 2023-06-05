@@ -11,8 +11,8 @@ html, body {
     background: url(../images/fundof5f5f5.png);
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
-  
   section {
     flex: 1 0 auto;
     margin-bottom: 20px;
@@ -217,63 +217,3 @@ html, body {
     margin: 3% 0;
 }
 
-  /*  RESPONSIVO  */
-  @media screen and (max-width: 992px) and (min-width: 668px) {
-    body {
-        /* background-color: orange; */
-    }
-
-    section.container div#anunciotablet {
-        display: block;
-        margin-bottom: 20px;
-    }
-}
-
-@media screen and (max-width: 667px) {
-    body{
-        /* background-color: pink; */
-    }
-
-    section.container div#anunciotablet {
-        display: block;
-        margin-bottom: 20px;
-        background-color: gray;
-    }
-}
-
-@media screen and (max-width: 457px) {
-    body {
-        /* background-color: purple; */
-    }
-
-    section.container div#anunciotablet {
-        display: none;
-    }
-}
-
-
-/*   Na media 357 posicionar o article acima do aside - deixar o texto um abaixo do outro*/
-
-@media screen and (max-width: 357px) {
-    body {
-        /* background-color: green; */
-    }
-
-    section.container article#conteudo {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    section.container aside#coluna {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    section.container div#banner {
-        display: none;
-    }
-
-    section.container article#conteudo h1, section.container aside#coluna h2 {
-        text-align: center;
-    }
-}

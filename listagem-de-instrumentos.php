@@ -1,7 +1,7 @@
 <?php
 include('config.php');
 require_once('repository/InstrumentoRepository.php');
-require_once('validadorAdmin.php');
+require_once('validador.php');
 
 $instrumentos = fnListInstrumentos();
 

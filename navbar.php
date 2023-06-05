@@ -7,8 +7,7 @@
         <a class="navbar-brand" href="#">
             <img src="images/logo.png" alt="logo" id="logo">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -19,30 +18,27 @@
                 <li><a href="sobrenos.php">Sobre nós</a></li>
                 <li class="search-bar">
                     <form role="search" method="post" action="localiza-instrumento.php">
-                        <input type="text" placeholder="  Pesquisar" class="search">
+                        <input type="text" placeholder="  Pesquisar" class="search" name="nome">
                         <button type="submit" class="btn-search">Buscar</button>
                     </form>
                 </li>
-                <?php if (isset($_SESSION['login']) && $_SESSION['login']->idcliente == 1) : ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Listas
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="listagem-de-clientes.php">Clientes</a>
-                        <a class="dropdown-item" href="listagem-de-instrumentos.php">Instrumentos</a>
-                    </div>
-                </li>
+                <?php if (isset($_SESSION['cliente']) && $_SESSION['cliente']->idcliente == 1) : ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Listas
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="listagem-de-clientes.php">Clientes</a>
+                            <a class="dropdown-item" href="listagem-de-instrumentos.php">Instrumentos</a>
+                        </div>
+                    </li>
                 <?php endif; ?>
-                <?php if (empty(isset($_SESSION['login']))) : ?>
-                <li><a href="login.php" class="login-btn">Login</a></li>
+                <?php if (empty(isset($_SESSION['cliente']))) : ?>
+                    <li><a href="login.php" class="login-btn">Login</a></li>
                 <?php else : ?>
-                <li><a href="minhaConta.php" class="">Minha Conta</a></li>
-                <li><a href="logout.php" class="login-btn">Logout</a></li>
+                    <li><a href="minhaConta.php" class="">Minha Conta</a></li>
+                    <li><a href="logout.php" class="login-btn">Logout</a></li>
                 <?php endif; ?>
-
-
             </ul>
         </div>
     </nav>

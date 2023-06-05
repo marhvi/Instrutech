@@ -15,6 +15,7 @@ $estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_SPECIAL_CHARS);
 $privilegio = filter_input(INPUT_POST, 'privilegio', FILTER_SANITIZE_SPECIAL_CHARS);
 
 
+$id = $_SESSION['cliente']->idcliente;
 
 if (fnUpdateCliente($id, $nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $privilegio)) {
     $msg = "Sucesso ao gravar";
@@ -22,7 +23,6 @@ if (fnUpdateCliente($id, $nome, $cep, $endereco, $num, $bairro, $cidade, $estado
     $msg = "Falha na gravação";
 }
 
-$_SESSION['id'] = $id;
 $page = "formulario-edita-cliente.php";
 setcookie('notify', $msg, time() + 10, "instrutech/{$page}", 'localhost');
 header("location: {$page}");
