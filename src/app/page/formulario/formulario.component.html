@@ -137,6 +137,21 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3 form-group">
+                    <label for="privilegioId" class="form-label">Privilegio</label>
+                    <select name="privilegio" id="privilegioId" class="form-control" formControlName="privilegio">
+                        <option value="compra">Apenas Comprador</option>
+                        <option value="venda">Vendedor e Comprador</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                    <div id="helperPrivilegio" class="form-text">Informe o privilegio</div>
+                </div>
+                <!-- Outros campos do formulário -->
+            </div>
+        </div>
+
         <div class="row mt-3">
             <div class="col">
                 <button class="btn btn-primary" type="submit" [disabled]="!formDataDriven.valid">Enviar</button>
