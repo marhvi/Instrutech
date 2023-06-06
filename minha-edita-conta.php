@@ -3,10 +3,9 @@ include('config.php');
 require_once('repository/ClienteRepository.php');
 require_once('validador.php');
 
-
 $idcliente = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-// $idcliente = $_SESSION['login']->idcliente;
+$idcliente = $_SESSION['login']->idcliente;
 $cliente = fnLocalizaClientePorId($idcliente);
 
 ?>
@@ -64,7 +63,7 @@ $cliente = fnLocalizaClientePorId($idcliente);
                         </div>
                         <!-- <div class="mb-3 form-group">
                             <label for="senhaId" class="form-label">Senha</label>
-                            <input type="password" name="senha" id="senhaId" class="form-control" placeholder="Informe a senha" value="<?= $cliente->senha ?>">
+                            <input type="password" name="senha" id="senhaId" class="form-control" placeholder="Informe a senha" value="">
                             <div id="helperSenha" class="form-text">Informe a senha</div>
                         </div> -->
                         <div class="mb-3 form-group">

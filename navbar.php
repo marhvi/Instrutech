@@ -22,7 +22,7 @@
                         <button type="submit" class="btn-search">Buscar</button>
                     </form>
                 </li>
-                <?php if (isset($_SESSION['cliente']) && $_SESSION['cliente']->idcliente == 1) : ?>
+                <?php if (isset($_SESSION['login']) && $_SESSION['login']->idcliente == 1) : ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Listas
@@ -33,7 +33,7 @@
                         </div>
                     </li>
                 <?php endif; ?>
-                <?php if (empty(isset($_SESSION['cliente']))) : ?>
+                <?php if (empty(isset($_SESSION['login']))) : ?>
                     <li><a href="login.php" class="login-btn">Login</a></li>
                 <?php else : ?>
                     <li><a href="minhaConta.php" class="">Minha Conta</a></li>

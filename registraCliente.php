@@ -1,5 +1,6 @@
 <?php
 require_once('repository/ClienteRepository.php');
+// require_once('repository/LoginRepository.php');
 
 $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -19,7 +20,7 @@ if (empty($nome) || empty($email) || empty($senha)) {
 } else {
     if (fnAddCliente($nome, $cep, $endereco, $num, $bairro, $cidade, $estado, $email, $senha, $privilegio)) {
         $msg = "Sucesso ao gravar";
-        fnAddLogin($email, $senha);
+        // fnAddLogin($email, $senha);
     } else {
         $msg = "Falha na gravação";
     }

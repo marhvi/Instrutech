@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
 CREATE TABLE IF NOT EXISTS `pedido` (
   `idpedido` int(11) AUTO_INCREMENT NOT NULL,
   `datapedido` date NOT NULL,
-  `valortotal` int(11) NOT NULL,
+  `valortotal` decimal(10, 2) NOT NULL,
   `idproduto` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
   PRIMARY KEY (`idpedido`),
